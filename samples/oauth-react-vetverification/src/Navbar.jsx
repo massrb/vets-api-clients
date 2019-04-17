@@ -37,9 +37,7 @@ export default withAuth(class Navbar extends Component {
   }
 
   async login() {
-    this.props.auth.login('/', {
-      idp: config.oidc.idp
-    });
+    this.props.auth.login('/', {idp: config.oidc.idp}, {authorizeUrl: config.oidc.authorizeUrl});
   }
 
   async logout() {
