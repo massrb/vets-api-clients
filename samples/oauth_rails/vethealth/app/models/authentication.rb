@@ -10,7 +10,8 @@ class Authentication < ApplicationRecord
 
   def self.attributes_from_oauth(response)
     attributes = response.to_h
-    attributes['expires_at'] = Time.zone.at(response['expires_at'])
+    attributes['expires_at'] = Time.zone.now + attributes['expires_in']
+    attributes.delete('expires_in')
     attributes
   end
 

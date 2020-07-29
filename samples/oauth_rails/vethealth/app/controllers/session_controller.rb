@@ -67,10 +67,14 @@ class SessionController < ApplicationController
   end
 
 private
-  def scope
+
+ def scope
     %w(
       openid
+      offline_access
       profile
+      email
+      veteran_status.read
       launch/patient
       patient/Patient.read
       patient/AllergyIntolerance.read
@@ -82,6 +86,8 @@ private
       patient/MedicationStatement.read
       patient/Observation.read
       patient/Procedure.read
+      patient/CommunityCareEligibility.read 
+      patient/CoverageEligibilityResponse.read
     ).join(' ')
   end
 end
